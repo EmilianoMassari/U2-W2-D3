@@ -1,0 +1,125 @@
+@import "partials/reset";
+@import "partials/colors";
+@import "partials/fonts";
+@import "partials/spacings";
+@import "partials/buttons";
+@import "partials/mixins";
+@import "partials/animations";
+
+// Layout generale
+body {
+  background: #222;
+  color: $color-text;
+}
+
+// Navbar
+.navbar {
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 3rem;
+  background: $color-bg-hero;
+  .logo {
+    font-size: $font-size-lg;
+    font-weight: bold;
+    letter-spacing: 2px;
+  }
+  ul {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    li a {
+      color: $color-text;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: $font-size-base;
+      transition: color 0.2s;
+      &:hover {
+        color: $color-btn-primary;
+      }
+    }
+  }
+}
+
+// Hero Section
+.hero {
+  width: 100vw;
+  min-height: 60vh;
+  background: $color-bg-hero;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem;
+  padding: 4rem 0;
+  .hero-content {
+    max-width: 600px;
+    @include fadeDownIn(hero-title, -40px, 0, 1s, 0s);
+    h1 {
+      @include title-big;
+      margin-bottom: 1.5rem;
+    }
+    p {
+      font-size: $font-size-lg;
+      margin-bottom: 2rem;
+    }
+    .buttons {
+      display: flex;
+      gap: 1.5rem;
+      .btn-primary {
+        @include fadeDownIn(btn1, -30px, 0, 1s, 0.2s);
+      }
+      .btn-secondary {
+        @include fadeDownIn(btn2, -30px, 0, 1s, 0.4s);
+      }
+      .btn-tertiary {
+        @include fadeDownIn(btn3, -30px, 0, 1s, 0.6s);
+      }
+    }
+  }
+  .hero-img {
+    width: 350px;
+    height: 350px;
+    object-fit: cover;
+    @include floating(
+      2rem,
+      0 12px 32px rgba(0, 0, 0, 0.22),
+      $color-border-light
+    );
+    @include fadeDownIn(hero-img, -50px, 0, 1.2s, 0.3s);
+  }
+}
+
+// Griglia dinamica
+.grid-section {
+  width: 100vw;
+  background: #f4f4f4;
+  padding: 3rem 0;
+  .grid {
+    @include grid(4);
+    .grid-item {
+      background: $color-bg-white;
+      padding: 2rem;
+      @include floating(1rem, 0 4px 16px rgba(0, 0, 0, 0.1));
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      img {
+        width: 120px;
+        height: 120px;
+        object-fit: cover;
+        margin-bottom: 1rem;
+        @include floating(1rem, 0 2px 8px rgba(0, 0, 0, 0.08));
+      }
+      h3 {
+        font-size: $font-size-lg;
+        margin-bottom: 0.5rem;
+        color: #222;
+      }
+      p {
+        color: #444;
+        font-size: $font-size-base;
+      }
+    }
+  }
+}

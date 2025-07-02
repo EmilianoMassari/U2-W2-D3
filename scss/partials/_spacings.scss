@@ -1,0 +1,32 @@
+// Variabili spaziature
+$spacings: (
+  sm: 0.5rem,
+  normal: 1rem,
+  md: 2rem,
+  xl: 3rem,
+  xxl: 5rem,
+);
+
+@each $type in (padding, margin) {
+  @each $dir,
+    $prop
+      in (
+        block: (
+          top,
+          bottom,
+        ),
+        inline: (
+          left,
+          right,
+        )
+      )
+  {
+    @each $size, $value in $spacings {
+      .#{$type}-#{$dir}-#{$size} {
+        @each $p in $prop {
+          #{$type}-#{$p}: #{$value} !important;
+        }
+      }
+    }
+  }
+}
